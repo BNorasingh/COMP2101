@@ -23,7 +23,7 @@ echo ""
 
 echo "12 largest files"
 echo "============="
-find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 5 | head -12 | awk '{print 4, 8, 12}'
+find / -type f -exec ls -lh --block-size=MB 2>/dev/null {} + | sort -rh -k 5 | head -n 12 | awk '{print $3, $5, $9}'
 echo ""
 
 
